@@ -11,3 +11,4 @@ pytest-cov
 pytest-django
 pytest-mock
 tox
+twine
