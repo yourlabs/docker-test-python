@@ -1,0 +1,13 @@
+codecov
+coverage
+mccabe
+pycodestyle<2.4.0
+flake8-import-order
+flake8-debugger
+pep8-naming
+mock
+pytest
+pytest-cov
+pytest-django
+pytest-mock
+tox
