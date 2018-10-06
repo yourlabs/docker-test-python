@@ -1,0 +1,13 @@
+#!/bin/sh
+echo -e "[pypi]" >> ~/.pypirc
+echo -e "username = $PYPI_USER" >> ~/.pypirc
+echo -e "password = $PYPI_PASS" >> ~/.pypirc
+set -eux
+echo Compiling translations
+for i in $(find . -name '*.po'); do echo msgfmt $i -o ${i/.po/.mo}; done
+echo Building dist
+python3 setup.py sdist
+echo Contents of dist tarball :
+tar -tvf dist/*
+echo Uploading with twine
+twine upload dist/*
