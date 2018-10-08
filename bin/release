@@ -1,10 +1,13 @@
 #!/bin/sh
+[ -n "${VERSION-}" ] || echo Please set VERSION env var
 echo -e "[pypi]" >> ~/.pypirc
 echo -e "username = $PYPI_USER" >> ~/.pypirc
 echo -e "password = $PYPI_PASS" >> ~/.pypirc
 set -eux
 echo Compiling translations
 for i in $(find . -name '*.po'); do echo msgfmt $i -o ${i/.po/.mo}; done
+echo Changing @VERSION to $VERSION
+sed -i s/@VERSION/$VERSION/ setup.py
 echo Building dist
 python3 setup.py sdist
 echo Contents of dist tarball :
