@@ -9,6 +9,9 @@ RUN ln -sfn /usr/bin/pip3 /usr/bin/pip
 RUN ln -sfn /usr/bin/python3 /usr/bin/python
 RUN curl -sL https://sentry.io/get-cli/ | bash
 RUN pip --no-cache install --upgrade pip
+RUN pip install -e git+https://yourlabs.io/oss/processcontroller.git#egg=processcontroller
+RUN pip install -e git+https://yourlabs.io/oss/clilabs.git#egg=clilabs
+RUN pip install -e git+https://yourlabs.io/oss/autoplay.git#egg=autoplay
 ADD requirements.txt /requirements.txt
 RUN pip --no-cache install --upgrade -r /requirements.txt
 
